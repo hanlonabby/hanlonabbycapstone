@@ -548,6 +548,14 @@ h1 {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
 }
 
+.feature-panel__body img {
+  width: clamp(120px, 18vw, 200px);
+  height: auto;
+  display: block;
+  margin-top: 1rem;
+  border-radius: 12px;
+}
+
 
 .modal-open {
   overflow: hidden;
