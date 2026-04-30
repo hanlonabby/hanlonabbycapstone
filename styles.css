@@ -1,1 +1,460 @@
+* {
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+h1, h2, h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.035em;
+  color: #1d1d1f;
+}
+
+p {
+  max-width: 68ch;
+  color: #424245;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(245, 245, 247, 0.82);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 600;
+  text-decoration: none;
+  color: #1d1d1f;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+nav a {
+  color: #424245;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.hero {
+  min-height: 90vh;
+  padding: 7rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6e6e73;
+}
+
+h1 {
+  font-size: clamp(3.4rem, 8vw, 7.8rem);
+  line-height: 0.92;
+  max-width: 1100px;
+  margin: 1rem 0;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: #6e6e73;
+}
+
+.section {
+  padding: 7rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.section-intro {
+  font-size: 1.2rem;
+  color: #6e6e73;
+  margin-bottom: 3rem;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.visual-placeholder,
+.video-placeholder,
+.gallery-item,
+.card,
+.metric-card {
+  border: none;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+}
+
+.visual-placeholder,
+.video-placeholder,
+.gallery-item {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #86868b;
+}
+
+/* Timeline */
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.timeline-card {
+  background: #ffffff;
+  border-radius: 28px;
+  min-height: 360px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-year {
+  color: #86868b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+}
+
+.timeline-note {
+  margin-top: 1rem !important;
+  color: #424245;
+}
+
+/* Artist Hover Cards */
+
+.artist-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.artist-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--artist-image);
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1;
+}
+
+.artist-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72));
+  z-index: 2;
+  transition: opacity 0.35s ease;
+}
+
+.artist-overlay {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.artist-overlay h3 {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  line-height: 0.95;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.artist-overlay .timeline-year {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.3s ease;
+}
+
+.artist-info {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  padding: 2rem 2rem 8.8rem;
+  overflow-y: auto;
+}
+
+.artist-info p {
+  color: #424245;
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.artist-info .timeline-note {
+  margin-top: 0.85rem !important;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.artist-card:hover {
+  background: #ffffff;
+}
+
+.artist-card:hover::before,
+.artist-card:hover::after {
+  opacity: 0;
+}
+
+.artist-card:hover .artist-overlay {
+  bottom: 2rem;
+  transform: translateY(-4px);
+}
+
+.artist-card:hover .artist-overlay h3,
+.artist-card:hover .artist-overlay .timeline-year {
+  color: #1d1d1f;
+  opacity: 1;
+}
+
+.artist-card:hover .artist-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Featured Bad Bunny Card */
+
+.artist-card.main-case {
+  grid-column: span 2;
+}
+
+.artist-card.main-case:hover {
+  background: #000;
+}
+
+.artist-card.main-case:hover .artist-overlay h3,
+.artist-card.main-case:hover .artist-overlay .timeline-year,
+.artist-card.main-case:hover .artist-info p,
+.artist-card.main-case:hover .artist-info .timeline-note {
+  color: #f5f5f7;
+}
+
+/* Hypothesis / Feature Section */
+
+.feature-section {
+  max-width: none;
+  background: #000;
+  color: #f5f5f7;
+  padding: 8rem 2rem;
+}
+
+.feature-section h2,
+.feature-section .pull-quote {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #f5f5f7;
+}
+
+.pull-quote {
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+/* Cards */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  padding: 2.3rem;
+  min-height: 300px;
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-top: 0;
+}
+
+/* Subsections */
+
+.subsection {
+  margin-top: 4rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.metric-card {
+  padding: 2.3rem;
+}
+
+.metric-card span {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #1d1d1f;
+}
+
+/* Campaign Section */
+
+.campaign-section {
+  max-width: none;
+  background: #ffffff;
+  padding: 8rem 2rem;
+}
+
+.campaign-section > * {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.video-placeholder {
+  margin-top: 2rem;
+  min-height: 480px;
+  background: #f5f5f7;
+}
+
+/* Works Cited */
+
+#works-cited p {
+  margin-bottom: 2rem;
+}
+
+#works-cited a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+#works-cited a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+
+footer {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+footer p {
+  margin: 0 auto;
+  color: #f5f5f7;
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .artist-card.main-case {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 5rem 1.25rem;
+  }
+
+  .section-grid,
+  .card-grid,
+  .gallery,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 75vh;
+    padding: 5rem 1.25rem;
+  }
+
+  .video-placeholder {
+    min-height: 280px;
+  }
+}
