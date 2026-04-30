@@ -180,3 +180,46 @@ window.addEventListener("load", () => {
   splitHypothesisHeadline();
   updateScrollScene();
 });
+
+const featureCards = Array.from(document.querySelectorAll(".feature-card"));
+const featurePanels = Array.from(document.querySelectorAll(".feature-panel"));
+
+const closeAllPanels = () => {
+  featurePanels.forEach((panel) => {
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+  });
+  document.body.classList.remove("modal-open");
+};
+
+const openPanel = (panelId) => {
+  const panel = document.getElementById(panelId);
+  if (!panel) return;
+  closeAllPanels();
+  panel.classList.add("is-open");
+  panel.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+};
+
+featureCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    openPanel(card.dataset.panel);
+  });
+});
+
+document.addEventListener("click", (event) => {
+  const closeTrigger = event.target.closest("[data-close]");
+  if (closeTrigger) {
+    closeAllPanels();
+    return;
+  }
+
+  const thumb = event.target.closest(".feature-thumb");
+  if (!thumb) return;
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeAllPanels();
+  }
+});
