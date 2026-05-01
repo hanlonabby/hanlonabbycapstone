@@ -181,45 +181,72 @@ window.addEventListener("load", () => {
   updateScrollScene();
 });
 
-const featureCards = Array.from(document.querySelectorAll(".feature-card"));
-const featurePanels = Array.from(document.querySelectorAll(".feature-panel"));
+const caseOpenButtons = Array.from(document.querySelectorAll("[data-case-open]"));
+const caseModals = Array.from(document.querySelectorAll(".case-modal"));
+const caseCards = Array.from(document.querySelectorAll(".case-card"));
 
-const closeAllPanels = () => {
-  featurePanels.forEach((panel) => {
-    panel.classList.remove("is-open");
-    panel.setAttribute("aria-hidden", "true");
+const closeCaseModals = () => {
+  caseModals.forEach((modal) => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
   });
   document.body.classList.remove("modal-open");
 };
 
-const openPanel = (panelId) => {
-  const panel = document.getElementById(panelId);
-  if (!panel) return;
-  closeAllPanels();
-  panel.classList.add("is-open");
-  panel.setAttribute("aria-hidden", "false");
+const openCaseModal = (modalId) => {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  closeCaseModals();
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
 };
 
-featureCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    openPanel(card.dataset.panel);
+caseOpenButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    openCaseModal(button.dataset.caseOpen);
   });
 });
 
 document.addEventListener("click", (event) => {
-  const closeTrigger = event.target.closest("[data-close]");
-  if (closeTrigger) {
-    closeAllPanels();
-    return;
+  if (event.target.closest("[data-case-close]")) {
+    closeCaseModals();
   }
-
-  const thumb = event.target.closest(".feature-thumb");
-  if (!thumb) return;
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    closeAllPanels();
+    closeCaseModals();
   }
 });
+
+const updateCaseStack = () => {
+  if (caseCards.length === 0) return;
+  const baseTop = 120;
+
+  caseCards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    const delta = rect.top - baseTop;
+    const normalized = clamp(delta / 200, -1, 1);
+
+    if (normalized >= 0) {
+      const incoming = 1 - normalized;
+      const translateY = lerp(18, 0, incoming);
+      const scale = lerp(0.99, 1, incoming);
+      card.style.transform = `translateY(${translateY}px) scale(${scale})`;
+      card.style.opacity = 1;
+      card.style.pointerEvents = incoming > 0.6 ? "auto" : "none";
+    } else {
+      const outgoing = clamp(-normalized, 0, 1);
+      const translateY = lerp(0, -18, outgoing);
+      const scale = lerp(1, 0.99, outgoing);
+      card.style.transform = `translateY(${translateY}px) scale(${scale})`;
+      card.style.opacity = 1;
+      card.style.pointerEvents = outgoing < 0.4 ? "auto" : "none";
+    }
+  });
+};
+
+updateCaseStack();
+window.addEventListener("scroll", updateCaseStack);
+window.addEventListener("resize", updateCaseStack);

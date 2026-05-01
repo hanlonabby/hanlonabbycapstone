@@ -201,72 +201,101 @@
       </div>
     </section>
 
-    <section id="apple" class="section">
+    <section id="apple" class="section history-section">
       <h2>Apple as a Brand</h2>
+      <p class="section-intro">Three mini case studies that show how Apple’s brand identity evolved through media, storytelling, and music.</p>
 
-      <div class="feature-cards">
-        <button class="feature-card" type="button" data-panel="brand-panel">
-          <span class="feature-card__eyebrow">Section 01</span>
-          <span class="feature-card__title">Apple’s Brand Identity</span>
-          <span class="feature-card__cta">Open</span>
-        </button>
-        <button class="feature-card" type="button" data-panel="iphone-panel">
-          <span class="feature-card__eyebrow">Section 02</span>
-          <span class="feature-card__title">Shot on iPhone</span>
-          <span class="feature-card__cta">Open</span>
-        </button>
-        <button class="feature-card" type="button" data-panel="music-panel">
-          <span class="feature-card__eyebrow">Section 03</span>
-          <span class="feature-card__title">Apple Music</span>
-          <span class="feature-card__cta">Open</span>
-        </button>
-      </div>
-
-      <div class="feature-panel" id="brand-panel" aria-hidden="true">
-        <div class="feature-panel__backdrop" data-close></div>
-        <div class="feature-panel__content">
-          <button class="feature-panel__close" type="button" data-close>Close</button>
-          <div class="feature-panel__media" data-default="Brand identity hero video">
-            <svg class="feature-logo" viewBox="0 0 384 512" role="img" aria-label="Apple logo">
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-card__visual" aria-hidden="true">
+            <svg class="case-logo" viewBox="0 0 384 512" role="img" aria-label="Apple logo">
               <path d="M318.7 268.6c-.2-57.6 47-85.3 49.1-86.6-26.8-39-68.6-44.3-83.3-44.9-35.5-3.6-69.2 20.9-87.2 20.9-18.1 0-46.1-20.4-75.7-19.9-38.9.6-74.9 22.7-94.9 57.7-40.5 70.3-10.4 174.4 29.1 231.5 19.3 27.9 42.2 59.2 72.3 58 28.9-1.2 39.8-18.7 74.7-18.7 34.9 0 44.7 18.7 75.2 18.1 31.2-.6 50.9-28.3 69.9-56.3 22.1-32.3 31.2-63.5 31.4-65.1-.7-.3-60.2-23.1-60.5-91.7zM259.2 85c16-19.4 26.8-46.4 23.9-73.2-23.1.9-51.2 15.4-67.8 34.8-14.9 17.2-27.9 44.7-24.4 71 25.7 2 52.3-13 68.3-32.6z"/>
             </svg>
           </div>
-          <div class="feature-panel__body">
+          <div class="case-card__body">
+            <p class="case-card__eyebrow">Section 01</p>
             <h3>Apple’s Brand Identity</h3>
             <p>
-              For 50 years, Apple has been universally recognized as “the greatest product company in history” (Jason Aten, Inc., 2026) and as one that learns from itself, its audiences, and the way the world evolves and adapts to new technology every day. The company prides itself on building products that help everyday people create, think, and perform better. Each rendition of iPhone, MacBook, iPad, Apple Watch, and more is better, more advanced, and technically sound than the last.
+              For 50 years, Apple has been universally recognized as “the greatest product company in history” (Jason Aten, Inc., 2026) and as one that learns from itself, its audiences, and the way the world evolves and adapts to new technology every day.
             </p>
+            <button class="case-card__action" type="button" data-case-open="brand-modal">Learn more</button>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card__visual">
+            <iframe
+              src="https://www.youtube.com/embed/S74jad3ZmUY?autoplay=1&mute=1&loop=1&playlist=S74jad3ZmUY&controls=0&modestbranding=1&playsinline=1"
+              title="Shot on iPhone"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="case-card__body">
+            <p class="case-card__eyebrow">Section 02</p>
+            <h3>Shot on iPhone</h3>
             <p>
-              Apple’s target market spans the entire world: limiting no age, background, social standing, culture, gender, or occupation. Built on technology that makes a difference, Apple stands out as a globally appreciated brand that celebrates and serves all consumers.
+              Apple is globally recognized as a leader in marketing because it doesn’t just advertise products – it communicates ideas that resonate culturally.
             </p>
+            <button class="case-card__action" type="button" data-case-open="iphone-modal">Learn more</button>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card__visual">
+            <iframe
+              src="https://www.youtube.com/embed/mpM5nzSEyXE"
+              title="Apple Music artist spotlight"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="case-card__body">
+            <p class="case-card__eyebrow">Section 03</p>
+            <h3>Apple Music</h3>
             <p>
-              Taken from Apple’s Values page on its website, the brand stands by this statement:
+              Those same standards of authenticity are represented and celebrated even more boldly through Apple’s sub-brand: Apple Music.
             </p>
-            <p>
-              “We are committed to demonstrating that business can and should be a force for good. Achieving that takes innovation, collaboration, and a focus on serving others. It also means leading with our values in the technology we make, the way we make it, and how we treat people and the planet we share. We’re always working to leave the world better than we found it, and to create powerful tools that empower others to do the same.” (Apple Investor Relations, 2026)
-            </p>
+            <button class="case-card__action" type="button" data-case-open="music-modal">Learn more</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="case-modal" id="brand-modal" aria-hidden="true">
+        <div class="case-modal__backdrop" data-case-close></div>
+        <div class="case-modal__dialog" role="dialog" aria-modal="true" aria-label="Apple’s Brand Identity">
+          <button class="case-modal__close" type="button" data-case-close>Close</button>
+          <div class="case-modal__content">
+            <div class="case-modal__visual" aria-hidden="true">
+              <svg class="case-logo" viewBox="0 0 384 512" role="img" aria-label="Apple logo">
+                <path d="M318.7 268.6c-.2-57.6 47-85.3 49.1-86.6-26.8-39-68.6-44.3-83.3-44.9-35.5-3.6-69.2 20.9-87.2 20.9-18.1 0-46.1-20.4-75.7-19.9-38.9.6-74.9 22.7-94.9 57.7-40.5 70.3-10.4 174.4 29.1 231.5 19.3 27.9 42.2 59.2 72.3 58 28.9-1.2 39.8-18.7 74.7-18.7 34.9 0 44.7 18.7 75.2 18.1 31.2-.6 50.9-28.3 69.9-56.3 22.1-32.3 31.2-63.5 31.4-65.1-.7-.3-60.2-23.1-60.5-91.7zM259.2 85c16-19.4 26.8-46.4 23.9-73.2-23.1.9-51.2 15.4-67.8 34.8-14.9 17.2-27.9 44.7-24.4 71 25.7 2 52.3-13 68.3-32.6z"/>
+              </svg>
+            </div>
+            <div class="case-modal__body">
+              <p class="case-card__eyebrow">Section 01</p>
+              <h3>Apple’s Brand Identity</h3>
+              <p>
+                For 50 years, Apple has been universally recognized as “the greatest product company in history” (Jason Aten, Inc., 2026) and as one that learns from itself, its audiences, and the way the world evolves and adapts to new technology every day. The company prides itself on building products that help everyday people create, think, and perform better. Each rendition of iPhone, MacBook, iPad, Apple Watch, and more is better, more advanced, and technically sound than the last.
+              </p>
+              <p>
+                Apple’s target market spans the entire world: limiting no age, background, social standing, culture, gender, or occupation. Built on technology that makes a difference, Apple stands out as a globally appreciated brand that celebrates and serves all consumers.
+              </p>
+              <p>
+                “We are committed to demonstrating that business can and should be a force for good. Achieving that takes innovation, collaboration, and a focus on serving others. It also means leading with our values in the technology we make, the way we make it, and how we treat people and the planet we share. We’re always working to leave the world better than we found it, and to create powerful tools that empower others to do the same.” (Apple Investor Relations, 2026)
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="feature-panel" id="iphone-panel" aria-hidden="true">
-        <div class="feature-panel__backdrop" data-close></div>
-        <div class="feature-panel__content">
-          <button class="feature-panel__close" type="button" data-close>Close</button>
-          <div class="feature-panel__body feature-panel__body--fade">
-            <h3>Shot on iPhone</h3>
-            <p>
-              Apple is globally recognized as a leader in marketing because it doesn’t just advertise products – it communicates ideas that resonate culturally. Over the decades, Apple has evolved its approach in step with how people use technology, shifting from cinematic storytelling to simple, visual demonstrations of real-world use. This human-first strategy allows Apple to create marketing that feels intuitive, emotional, and culturally relevant – especially within live event spaces where storytelling drives engagement.
-            </p>
-            <p>
-              This approach continues in more recent campaigns like “Shot on iPhone”, one of the highest-performing advertisement campaigns in the world since 2015, with 70 million social media interactions and 100,000+ photo submissions (Get Kard, 2026), which showcase real, high-quality content created on Apple devices rather than relying on traditional ads.
-            </p>
-            <p>
-              By turning user output into the advertisement itself, Apple reinforces authenticity and inclusiveness while scaling globally – mirroring how live events rely on real experiences and audience participation. This evolution highlights why Apple remains a globally respected advertiser: it consistently turns product capability into culture, not just promotion.
-            </p>
-          </div>
-          <div class="feature-media-stack feature-media-stack--sticky">
-            <div class="feature-panel__media">
+      <div class="case-modal" id="iphone-modal" aria-hidden="true">
+        <div class="case-modal__backdrop" data-case-close></div>
+        <div class="case-modal__dialog" role="dialog" aria-modal="true" aria-label="Shot on iPhone">
+          <button class="case-modal__close" type="button" data-case-close>Close</button>
+          <div class="case-modal__content">
+            <div class="case-modal__visual">
               <iframe
                 src="https://www.youtube.com/embed/S74jad3ZmUY?autoplay=1&mute=1&loop=1&playlist=S74jad3ZmUY&controls=0&modestbranding=1&playsinline=1"
                 title="Shot on iPhone"
@@ -275,34 +304,53 @@
                 allowfullscreen
               ></iframe>
             </div>
-            <div class="feature-media-grid">
-              <img src="images/billboardiphone.jpg" alt="Shot on iPhone billboard" />
-              <img src="images/shotoniphonetree.png" alt="Shot on iPhone tree" />
+            <div class="case-modal__body">
+              <p class="case-card__eyebrow">Section 02</p>
+              <h3>Shot on iPhone</h3>
+              <p>
+                Apple is globally recognized as a leader in marketing because it doesn’t just advertise products – it communicates ideas that resonate culturally. Over the decades, Apple has evolved its approach in step with how people use technology, shifting from cinematic storytelling to simple, visual demonstrations of real-world use. This human-first strategy allows Apple to create marketing that feels intuitive, emotional, and culturally relevant – especially within live event spaces where storytelling drives engagement.
+              </p>
+              <p>
+                This approach continues in more recent campaigns like “Shot on iPhone”, one of the highest-performing advertisement campaigns in the world since 2015, with 70 million social media interactions and 100,000+ photo submissions (Get Kard, 2026), which showcase real, high-quality content created on Apple devices rather than relying on traditional ads.
+              </p>
+              <p>
+                By turning user output into the advertisement itself, Apple reinforces authenticity and inclusiveness while scaling globally – mirroring how live events rely on real experiences and audience participation. This evolution highlights why Apple remains a globally respected advertiser: it consistently turns product capability into culture, not just promotion.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="feature-panel" id="music-panel" aria-hidden="true">
-        <div class="feature-panel__backdrop" data-close></div>
-        <div class="feature-panel__content">
-          <button class="feature-panel__close" type="button" data-close>Close</button>
-          <div class="feature-panel__media" data-default="Apple Music artist spotlight">Apple Music artist spotlight</div>
-          <div class="feature-panel__body">
-            <h3>Apple Music</h3>
-            <p>
-              Those same standards of authenticity are represented and celebrated even more boldly through Apple’s sub-brand: Apple Music.
-            </p>
-            <p>
-              Since its launch in 2015, Apple Music has pioneered the music streaming industry as the top artist-centric and music-only streaming service available to consumers, introduced as “an exciting way for fans to connect with artists” by Eddy Cue, Apple’s senior vice president of Internet Software and Services, at the time of its release. (Apple Newsroom, 2015).
-              <img src="images/2015applemusic.jpeg" alt="Apple Music launch 2015" />
-            </p>
-            
-            <p>
-              Before the days of music streaming, Apple had already served as the unsung hero in music marketing strategy, dating back to the early 2000s. The company’s initiative to advertise the iconic iPod silhouette campaigns while implementing tracks from artists’ music available for purchase on iTunes had leveraged Apple as an innovator in creativity and connection from the start.
-            </p>
-
-            <p>Leveraging music as a key part of Apple’s brand identity only strengthens its connection with a more diverse audience. Music provides emotional impact in ways that technology will never be able to completely match – appealing to all demographics all over the world, strengthening brand loyalty with its broader audience.</p>
+      <div class="case-modal" id="music-modal" aria-hidden="true">
+        <div class="case-modal__backdrop" data-case-close></div>
+        <div class="case-modal__dialog" role="dialog" aria-modal="true" aria-label="Apple Music">
+          <button class="case-modal__close" type="button" data-case-close>Close</button>
+          <div class="case-modal__content">
+            <div class="case-modal__visual">
+              <iframe
+                src="https://www.youtube.com/embed/mpM5nzSEyXE"
+                title="Apple Music artist spotlight"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="case-modal__body">
+              <p class="case-card__eyebrow">Section 03</p>
+              <h3>Apple Music</h3>
+              <p>
+                Those same standards of authenticity are represented and celebrated even more boldly through Apple’s sub-brand: Apple Music.
+              </p>
+              <p>
+                Since its launch in 2015, Apple Music has pioneered the music streaming industry as the top artist-centric and music-only streaming service available to consumers, introduced as “an exciting way for fans to connect with artists” by Eddy Cue, Apple’s senior vice president of Internet Software and Services, at the time of its release. (Apple Newsroom, 2015).
+              </p>
+              <p>
+                Before the days of music streaming, Apple had already served as the unsung hero in music marketing strategy, dating back to the early 2000s. The company’s initiative to advertise the iconic iPod silhouette campaigns while implementing tracks from artists’ music available for purchase on iTunes had leveraged Apple as an innovator in creativity and connection from the start.
+              </p>
+              <p>
+                Leveraging music as a key part of Apple’s brand identity only strengthens its connection with a more diverse audience. Music provides emotional impact in ways that technology will never be able to completely match – appealing to all demographics all over the world, strengthening brand loyalty with its broader audience.
+              </p>
+            </div>
           </div>
         </div>
       </div>
