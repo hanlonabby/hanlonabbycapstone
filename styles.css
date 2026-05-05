@@ -136,6 +136,34 @@ h1 {
 }
 
 /* TIMELINE */
+.social-rollout-timeline .simple-timeline-item {
+  margin-bottom: 5.5rem;
+}
+
+.social-rollout-timeline .simple-timeline-item:not(:last-child)::after {
+  height: calc(100% + 3.7rem);
+}
+
+.social-embed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.social-embed-grid .instagram-media {
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+@media (max-width: 800px) {
+  .social-embed-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .timeline {
   display: grid;
@@ -990,39 +1018,54 @@ h1 {
 /* EDITORIAL MEDIA FRAME */
 
 .editorial-media-frame {
-  max-width: 680px;
-  margin: 3.5rem auto;
-  padding: 2rem 0;
+  width: 100%;
+  max-width: 760px;
+  margin: 2.5rem auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+
+.editorial-video-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
 }
 
 .editorial-video {
   width: 100%;
-  max-width: 280px;
   height: auto;
-  aspect-ratio: 9 / 16;
-  border-radius: 12px;
-  background: #f5f5f7;
+  aspect-ratio: 16 / 9;
+  border-radius: 22px;
+  object-fit: cover;
   display: block;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.16);
 }
 
-.editorial-video::-webkit-media-controls {
-  background-color: rgba(0, 0, 0, 0.5);
+.editorial-media-caption {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #6e6e73;
+}
+
+.editorial-media-caption a {
+  color: #0066cc;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /* Mobile video responsiveness */
 @media (max-width: 640px) {
   .editorial-media-frame {
-    margin: 2.5rem auto;
-    padding: 1.5rem 1rem;
+    margin: 1rem auto;
+    padding: 0;
   }
 
   .editorial-video {
     max-width: 100%;
-    border-radius: 8px;
+    height: auto;
+    border-radius: 12px;
   }
 }
 
@@ -1032,6 +1075,44 @@ h1 {
   display: flex;
   flex-direction: column;
   min-height: 420px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card-content h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-content h3:first-child {
+  margin-top: 0;
+}
+
+.card-content p {
+  margin: 0 0 0.3rem 0;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.scroll-card.is-visible .card-content h3,
+.scroll-card.is-visible .card-content p,
+.scroll-card.is-visible .editorial-video,
+.scroll-card.is-visible .video-credit,
+.scroll-card.is-visible .sports-image,
+.scroll-card.is-visible .maps-carousel,
+.scroll-card.is-visible .engagement-image,
+.scroll-card.is-visible .wallpaper-image {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .card-slide {
@@ -1083,8 +1164,10 @@ h1 {
 .video-credit {
   font-size: 0.85rem;
   color: #999;
-  margin-top: 0.8rem;
+  margin: 0.3rem auto 1rem auto;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
 .video-credit a {
@@ -1108,9 +1191,15 @@ h1 {
 
 .sports-image {
   width: 100%;
-  height: auto;
+  max-width: 380px;
+  height: 380px;
+  object-fit: cover;
   display: block;
-  margin: 0.5rem auto 2rem auto;
+  margin: 0.3rem auto 1rem auto;
+  border-radius: 16px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 
 .sports-mockup-container {
@@ -1129,11 +1218,11 @@ h1 {
 }
 
 .maps-carousel {
-  margin: 3rem 0;
+  margin: 1.5rem 0 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .maps-carousel-track {
@@ -1211,8 +1300,8 @@ h1 {
 }
 
 .apple-maps-guide-card {
-  margin: 3rem 0;
-  padding: 2rem;
+  margin: 1.5rem 0 0 0;
+  padding: 1.5rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(245, 245, 247, 0.8));
   backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -1472,4 +1561,278 @@ footer p {
   height: 100%;
   border: none;
   object-fit: cover;
+}
+
+/* ENGAGEMENT IMAGES */
+
+.engagement-image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0.3rem auto 1rem auto;
+  border-radius: 16px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.wallpaper-split-container {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.wallpaper-image {
+  width: 100%;
+  max-width: 280px;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wallpaper-image:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.wallpaper-image:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+/* TIMELINE LIST */
+
+.simple-timeline {
+  margin: 3rem 0;
+  padding-left: 1.35rem;
+  max-width: 850px;
+}
+
+.simple-timeline-item {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-card.is-visible .simple-timeline-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.simple-timeline-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.simple-timeline-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.simple-timeline-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.simple-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.simple-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -0.1rem;
+  top: 0.55rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #000;
+}
+
+.simple-timeline-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 1.35rem;
+  width: 2px;
+  height: calc(100% + 1.15rem);
+  background: #000;
+}
+
+.simple-timeline-item p {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.65vw, 1.55rem);
+  line-height: 1.45;
+  color: #1d1d1f;
+  max-width: 780px;
+}
+
+.simple-timeline-item strong {
+  font-weight: 850;
+  color: #000;
+}
+
+@media (max-width: 800px) {
+  .simple-timeline {
+    padding-left: 1rem;
+  }
+
+  .simple-timeline-item {
+    padding-left: 1.2rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .simple-timeline-item p {
+    font-size: 1rem;
+  }
+}
+
+/* SOCIAL EMBEDS */
+
+.social-embeds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  max-width: 700px;
+}
+
+.social-embed-item {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  aspect-ratio: 4 / 5;
+}
+
+.social-embed-item.tiktok-embed-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-embed-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.social-embed-item iframe,
+.social-embed-item blockquote {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.social-embed-item iframe[src*="youtube.com"] {
+  border-radius: 16px;
+}
+
+.editorial-video-small {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.media-caption {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: #666;
+  margin-top: 1rem;
+}
+
+.media-caption a {
+  color: #0071e3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.media-caption a:hover {
+  text-decoration: underline;
+}
+
+/* CAMPAIGN SECTION MEDIA */
+
+.campaign-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+  max-width: 1200px;
+}
+
+.campaign-media-item {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  aspect-ratio: 4 / 5;
+}
+
+.campaign-media-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.campaign-media-item iframe,
+.campaign-media-item blockquote {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.campaign-media-item iframe[src*="youtube.com"] {
+  border-radius: 16px;
+}
+
+/* SHOT ON IPHONE CASE */
+
+.shot-on-iphone-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.shot-on-iphone-image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+}
+
+.case-card-caption {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: #666;
+  margin: 1rem 0 0 0;
+  line-height: 1.5;
+}
+
+/* ALL VIDEO & IFRAME STYLING */
+
+.case-card__visual iframe,
+.case-modal__visual iframe {
+  border-radius: 16px;
+  display: block;
+}
+
+iframe[src*="youtube.com"] {
+  border-radius: 16px;
+}
+
+@media (max-width: 800px) {
+  .social-embeds-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
 }
