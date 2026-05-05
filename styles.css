@@ -5040,3 +5040,92 @@ body {
 .essential-question-section {
   scroll-snap-stop: always;
 }
+
+/* =========================
+   MOBILE OPTIMIZATION
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* GLOBAL SPACING */
+  section,
+  .section {
+    padding: 5rem 1.5rem !important;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 1.5rem !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 11vw, 4.2rem) !important;
+    line-height: 0.95;
+  }
+
+  .hero-subhead {
+    font-size: 1.1rem !important;
+  }
+
+  /* RED BLOCK */
+  .hero::before {
+    width: 80vw;
+    height: 35vh;
+    right: -40vw;
+    top: 10vh;
+  }
+
+  /* CASE CARDS (HISTORY SECTION) */
+  .case-card {
+    position: relative !important; /* disables sticky on mobile */
+    top: auto !important;
+    transform: none !important;
+  }
+
+  /* STACK FIX */
+  .case-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* MODALS */
+  .case-modal__content {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* VIDEOS / EMBEDS */
+  video,
+  iframe {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* TIMELINE / SCROLL SECTIONS */
+  .scroll-scene,
+  .preshow-scroll,
+  .hypothesis-scene {
+    height: auto !important;
+    position: relative !important;
+  }
+
+  .layer,
+  .layer-timeline,
+  .layer-apple-lead {
+    position: relative !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  /* ESSENTIAL QUESTION */
+  .essential-question-section h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  /* TEXT OVERFLOW SAFETY */
+  h1, h2, h3, p {
+    word-wrap: break-word;
+  }
+}
