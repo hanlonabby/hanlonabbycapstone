@@ -4010,3 +4010,63 @@ iframe[src*="youtube.com"] {
   color: rgba(255,255,255,0.85);
   margin: 0 0 1rem;
 }
+
+/* MATCH EXISTING WHITE CARD STYLE */
+
+.campaign-system-card {
+  width: 100%;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: 0;
+
+  background: #ffffff;
+  border-radius: 34px;
+  padding: clamp(2.5rem, 5vw, 5rem);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.06);
+}
+
+.campaign-system-card h3 {
+  font-size: clamp(2.8rem, 5vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+  margin: 0 0 1.5rem;
+  font-weight: 760;
+}
+
+.campaign-system-card p {
+  font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+  line-height: 1.42;
+  color: #6e6e73;
+  max-width: 760px;
+  margin: 0 0 1.25rem;
+}
+
+.campaign-system-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* RED CONCLUSION SECTION */
+
+#conclusion {
+  background: #e11d2e; /* your red */
+  color: #ffffff;
+}
+
+#conclusion h2,
+#conclusion h3,
+#conclusion p,
+#conclusion span {
+  color: #ffffff;
+}
+
+#conclusion .conclusion-lede,
+#conclusion p {
+  color: rgba(255,255,255,0.85);
+}
+
+#conclusion .conclusion-grid article {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.15);
+}
