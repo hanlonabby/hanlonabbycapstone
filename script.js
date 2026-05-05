@@ -377,8 +377,8 @@ const rolloutObserver = new IntersectionObserver(
     }
   },
   {
-    threshold: [0.2, 0.35, 0.5, 0.65],
-    rootMargin: "-15% 0px -30% 0px",
+    threshold: [0.1],
+    rootMargin: "0px 0px -40% 0px",
   }
 );
 
@@ -476,5 +476,47 @@ cardSliders.forEach((slider) => {
       updateSlide(currentSlide + 1);
     });
   }
+});
+
+/* MAPS CAROUSEL */
+
+const mapsCarousels = document.querySelectorAll(".maps-carousel");
+mapsCarousels.forEach((carousel) => {
+  const slides = carousel.querySelectorAll(".maps-carousel-slide");
+  const dots = carousel.querySelectorAll(".maps-carousel-dot");
+  const prevBtn = carousel.querySelector(".maps-carousel-prev");
+  const nextBtn = carousel.querySelector(".maps-carousel-next");
+  let currentSlide = 0;
+
+  const updateSlide = (index) => {
+    currentSlide = index % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === currentSlide);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentSlide);
+    });
+  };
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      updateSlide(currentSlide - 1 + slides.length);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      updateSlide(currentSlide + 1);
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      updateSlide(index);
+    });
+  });
+
+  // Set initial active slide
+  updateSlide(0);
 });
 data-color

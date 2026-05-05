@@ -1098,6 +1098,203 @@ h1 {
   text-decoration: underline;
 }
 
+/* SPORTS & MAPS SECTIONS */
+
+.sports-image-container {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sports-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem auto 2rem auto;
+}
+
+.sports-mockup-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.sports-mockup-image {
+  width: 100%;
+  max-width: 380px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.maps-carousel {
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.maps-carousel-track {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.maps-carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.maps-carousel-slide.active {
+  opacity: 1;
+}
+
+.maps-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.maps-carousel-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.maps-carousel-nav {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #1d1d1f;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.maps-carousel-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.maps-carousel-dots {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.maps-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d1d6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.maps-carousel-dot.active {
+  background: #1d1d1f;
+  width: 28px;
+  border-radius: 5px;
+}
+
+.apple-maps-guide-card {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(245, 245, 247, 0.8));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.guide-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.guide-icon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 113, 227, 0.1);
+  border-radius: 12px;
+}
+
+.guide-info {
+  flex: 1;
+}
+
+.guide-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0071e3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.guide-name {
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 700;
+  color: #1d1d1f;
+  margin: 0.25rem 0 0 0;
+  line-height: 1.2;
+}
+
+.guide-description {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: #555;
+  line-height: 1.6;
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+.guide-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #0071e3;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.15);
+}
+
+.guide-cta-button:hover {
+  background: #0077ed;
+  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.25);
+  transform: translateY(-2px);
+}
+
+.guide-cta-button .arrow {
+  transition: transform 0.3s ease;
+}
+
+.guide-cta-button:hover .arrow {
+  transform: translateX(4px);
+}
+
 /* METRICS */
 
 .metrics {
@@ -1245,4 +1442,34 @@ footer p {
     justify-content: center;
     gap: 0.6rem;
   }
+}
+.instagram-embed-wrap {
+  width: 100%;
+  max-width: 430px;
+  margin: 2.5rem auto 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instagram-embed-wrap .instagram-media {
+  width: 100% !important;
+  min-width: unset !important;
+  max-width: 430px !important;
+  margin: 0 auto !important;
+}
+
+/* only keep this for non-Instagram placeholders */
+.video-placeholder:not(.instagram-embed-wrap) {
+  height: 400px;
+  background: #e5e5e7;
+  border-radius: 28px;
+}
+
+.preshow-video-reveal__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;
 }
