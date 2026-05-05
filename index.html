@@ -211,10 +211,7 @@
     Three mini case studies that show how Apple’s brand identity evolved through media, storytelling, and music.
   </p>
 
-  <!-- CLEAN CARD STACK -->
   <div class="case-grid">
-
-    <!-- CARD 1 -->
     <article class="case-card">
       <div class="case-card__visual" aria-hidden="true">
         <svg class="case-logo" viewBox="0 0 384 512">
@@ -228,14 +225,13 @@
         <p>
           For 50 years, Apple has been universally recognized as “the greatest product company in history” and continues to evolve alongside its audiences and technology.
         </p>
-        <button class="case-card__action" data-case-open="brand-modal">Learn more</button>
+        <button class="case-card__action" type="button" data-case-open="brand-modal">Learn more</button>
       </div>
     </article>
 
-    <!-- CARD 2 -->
     <article class="case-card">
       <div class="case-card__visual">
-        <img src="images/shotoniphonetree.png" class="case-card__image">
+        <img src="images/shotoniphonetree.png" class="case-card__image" alt="Shot on iPhone campaign">
       </div>
 
       <div class="case-card__body">
@@ -244,14 +240,13 @@
         <p>
           Apple turns product capability into culture — showcasing real-world creativity through its users.
         </p>
-        <button class="case-card__action" data-case-open="iphone-modal">Learn more</button>
+        <button class="case-card__action" type="button" data-case-open="iphone-modal">Learn more</button>
       </div>
     </article>
 
-    <!-- CARD 3 -->
     <article class="case-card">
       <div class="case-card__visual">
-        <img src="images/2015applemusic.jpeg" class="case-card__image">
+        <img src="images/2015applemusic.jpeg" class="case-card__image" alt="Apple Music launch screens">
       </div>
 
       <div class="case-card__body">
@@ -260,10 +255,67 @@
         <p>
           Apple expands its ecosystem through music — creating deeper emotional and cultural connections.
         </p>
-        <button class="case-card__action" data-case-open="music-modal">Learn more</button>
+        <button class="case-card__action" type="button" data-case-open="music-modal">Learn more</button>
       </div>
     </article>
+  </div>
 
+  <div class="case-modal" id="brand-modal" aria-hidden="true">
+    <div class="case-modal__backdrop" data-case-close></div>
+    <div class="case-modal__dialog">
+      <button class="case-modal__close" type="button" data-case-close>Close</button>
+      <div class="case-modal__content">
+        <div class="case-modal__visual">
+          <svg class="case-logo" viewBox="0 0 384 512">
+            <path d="M318.7 268.6c-.2-57.6 47-85.3 49.1-86.6-26.8-39-68.6-44.3-83.3-44.9-35.5-3.6-69.2 20.9-87.2 20.9-18.1 0-46.1-20.4-75.7-19.9-38.9.6-74.9 22.7-94.9 57.7-40.5 70.3-10.4 174.4 29.1 231.5 19.3 27.9 42.2 59.2 72.3 58 28.9-1.2 39.8-18.7 74.7-18.7 34.9 0 44.7 18.7 75.2 18.1 31.2-.6 50.9-28.3 69.9-56.3 22.1-32.3 31.2-63.5 31.4-65.1-.7-.3-60.2-23.1-60.5-91.7z"/>
+          </svg>
+        </div>
+        <div class="case-modal__body">
+          <p class="case-card__eyebrow">Section 01</p>
+          <h3>Apple’s Brand Identity</h3>
+          <p>Apple’s brand identity is built around products that help people create, communicate, and participate in culture.</p>
+          <p>Its global reach allows the company to connect with audiences across age, background, culture, and occupation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-modal" id="iphone-modal" aria-hidden="true">
+    <div class="case-modal__backdrop" data-case-close></div>
+    <div class="case-modal__dialog">
+      <button class="case-modal__close" type="button" data-case-close>Close</button>
+      <div class="case-modal__content">
+        <div class="case-modal__visual iphone-modal-gallery">
+          <img src="images/shotoniphonetree.png" alt="Shot on iPhone">
+          <img src="images/billboardiphone.jpg" alt="Shot on iPhone billboard">
+          <img src="images/shotoniphone12.jpeg" alt="Shot on iPhone campaign">
+        </div>
+        <div class="case-modal__body">
+          <p class="case-card__eyebrow">Section 02</p>
+          <h3>Shot on iPhone</h3>
+          <p>Shot on iPhone turns product capability into culture by making everyday users part of the campaign itself.</p>
+          <p>The campaign reinforces authenticity, creativity, and global participation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-modal" id="music-modal" aria-hidden="true">
+    <div class="case-modal__backdrop" data-case-close></div>
+    <div class="case-modal__dialog">
+      <button class="case-modal__close" type="button" data-case-close>Close</button>
+      <div class="case-modal__content">
+        <div class="case-modal__visual">
+          <img src="images/2015applemusic.jpeg" alt="Apple Music launch screens" class="case-modal__image">
+        </div>
+        <div class="case-modal__body">
+          <p class="case-card__eyebrow">Section 03</p>
+          <h3>Apple Music</h3>
+          <p>Apple Music extends Apple’s ecosystem into culture, using music as a way to connect audiences emotionally.</p>
+          <p>This makes the platform a natural home for global live moments like the Super Bowl Halftime Show.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -510,18 +562,18 @@
       </div>
 
       <div class="social-embed-item video-embed-card media-unified media-vertical">
-        <a href="https://www.tiktok.com/@applemusic/video/7555556536995695902" target="_blank" class="editorial-video-link">
-          <video class="full-size-tiktok-video" autoplay muted loop playsinline controls>
-            <source src="images/applemusic-announcement.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </a>
+  <video class="full-size-tiktok-video" autoplay muted loop playsinline controls>
+    <source src="images/applemusic-announcement.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-        <p class="media-caption section-five-caption">
-          Taken via TikTok by 
-          <a href="https://www.tiktok.com/@applemusic/video/7555556536995695902" target="_blank">@AppleMusic</a>
-        </p>
-      </div>
+  <p class="media-caption section-five-caption">
+    Taken via TikTok by 
+    <a href="https://www.tiktok.com/@applemusic/video/7555556536995695902" target="_blank">
+      @AppleMusic
+    </a>
+  </p>
+</div>
     </div>
   </div>
 </article>
@@ -930,21 +982,21 @@
   </div>
 </section>
 
-</section>
-    <section id="methodology" class="section">
-      <section id="methodology" class="section">
+<section id="methodology" class="section">
   <h2>Research Methodology</h2>
+
   <p>
-This research was conducted through a combination of secondary sources, including industry reports, brand publications, press releases, social media content, and platform analytics related to the Apple Music Super Bowl LX Halftime Show. Key insights were gathered from Apple’s official communications, media coverage, and publicly available performance metrics to analyze the campaign’s global reach, marketing strategy, and cultural impact.
-</p>
+    This research was conducted through a combination of secondary sources, including industry reports, brand publications, press releases, social media content, and platform analytics related to the Apple Music Super Bowl LX Halftime Show. Key insights were gathered from Apple’s official communications, media coverage, and publicly available performance metrics to analyze the campaign’s global reach, marketing strategy, and cultural impact.
+  </p>
 
-<p>
-In addition, generative AI tools including ChatGPT, Microsoft Copilot, and Claude were used as supportive resources throughout the development of this project. These tools helped translate conceptual ideas into working design through “vibe coding,” bringing interactive elements and storytelling components to the website. Prompting these chats both on their own websites and in the VS Code app themselves allowed me to communicate my goals and recieve real-time feedback, where I was able to follow up and ask questions in response too. They were also used to ask clarifying questions related to UI/UX design vocabulary and to generate step-by-step guidance for implementing advanced web features such as scroll-triggered animations, sticky sections, and interactive content layouts.
-</p>
+  <p>
+    In addition, generative AI tools including ChatGPT, Microsoft Copilot, and Claude were used as supportive resources throughout the development of this project. These tools helped translate conceptual ideas into working design through “vibe coding,” bringing interactive elements and storytelling components to the website. Prompting these chats both on their own websites and in the VS Code app allowed me to communicate my goals and receive real-time feedback, while also asking follow-up questions. They were also used to clarify UI/UX design vocabulary and generate step-by-step guidance for implementing advanced web features such as scroll-triggered animations, sticky sections, and interactive content layouts.
+  </p>
 
-<p>
-Without these tools, I would not have discovered a passion for user experience. Learning the terminology and building visually engaging, interactive elements sparked an interest that I hope to continue refining in the future. All AI-generated outputs were consistently reviewed, refined, and adapted to align with the project’s creative direction and research goals.
-</p>
+  <p>
+    Without these tools, I would not have discovered a passion for user experience. Learning the terminology and building visually engaging, interactive elements sparked an interest that I hope to continue refining in the future. All AI-generated outputs were consistently reviewed, refined, and adapted to align with the project’s creative direction and research goals.
+  </p>
+</section>
 
 <section id="works-cited" class="works-cited-section">
   <div class="works-cited-container">

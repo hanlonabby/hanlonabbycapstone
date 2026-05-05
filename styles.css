@@ -4449,3 +4449,128 @@ iframe[src*="youtube.com"] {
 .section-seven-collage {
   align-items: start !important;
 }
+
+#methodology {
+  position: relative;
+  z-index: 5;
+  background: #f5f5f7;
+}
+
+/* FIX CARD 6 OVERLAP */
+
+.section-six-pinterest-grid {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4rem;
+}
+
+.section-six-media-card {
+  position: relative;
+  z-index: 2;
+  min-height: 540px;
+}
+
+.section-six-media-card .instagram-media {
+  margin: 0 auto !important;
+}
+
+.february-rollout-item {
+  margin-top: 6rem;
+  clear: both;
+}
+
+.social-rollout-timeline .simple-timeline-item {
+  position: relative;
+  overflow: visible;
+}
+
+/* FINAL SUBMISSION FIX: CARD 5 VIDEO + CARD 6 OVERLAP */
+
+.section-five-bottom-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.video-embed-card {
+  overflow: hidden;
+}
+
+.full-size-tiktok-video {
+  width: 100% !important;
+  max-width: 340px !important;
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 18px !important;
+}
+
+/* Card 6 hard reset so the January embeds cannot overlap February */
+.section-six-pinterest-grid,
+.section-six-expanded-grid {
+  column-count: unset !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 1.5rem !important;
+  max-width: 680px !important;
+  margin: 2rem auto 4.5rem !important;
+  overflow: visible !important;
+}
+
+.section-six-media-card {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  break-inside: auto !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.section-six-media-card .instagram-media {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.february-rollout-item {
+  clear: both !important;
+  margin-top: 5rem !important;
+  padding-top: 2rem !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.social-rollout-timeline .simple-timeline-item {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 900px) {
+  .section-five-bottom-row,
+  .section-six-pinterest-grid,
+  .section-six-expanded-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.section-five-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.full-size-tiktok-video {
+  width: 100% !important;
+  max-width: 340px !important;
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 18px !important;
+  display: block !important;
+}
