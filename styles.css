@@ -4332,3 +4332,9 @@ iframe[src*="youtube.com"] {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
+
+.tiktok-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
