@@ -520,3 +520,144 @@ mapsCarousels.forEach((carousel) => {
   updateSlide(0);
 });
 data-color
+
+/* REFRESH INSTAGRAM EMBEDS AFTER PAGE LOAD */
+
+window.addEventListener("load", () => {
+  if (window.instgrm && window.instgrm.Embeds) {
+    window.instgrm.Embeds.process();
+  }
+});
+
+/* CENTER-TRIGGERED FAST METRICS COUNT-UP */
+
+(() => {
+  const metricCards = document.querySelectorAll(".metrics-pop-card");
+
+  const animateCounterFast = (counter) => {
+    if (counter.dataset.animated === "true") return;
+
+    counter.dataset.animated = "true";
+
+    const target = parseFloat(counter.dataset.target);
+    const decimals = parseInt(counter.dataset.decimals || "0", 10);
+    const duration = 650;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const current = target * eased;
+
+      counter.textContent = current.toFixed(decimals);
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        counter.textContent = target.toFixed(decimals);
+      }
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const checkMetricsCenter = () => {
+    const viewportCenter = window.innerHeight / 2;
+
+    metricCards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
+
+      if (distanceFromCenter < window.innerHeight * 0.22) {
+        card.classList.add("is-visible");
+
+        card.querySelectorAll(".count-up").forEach((counter) => {
+          animateCounterFast(counter);
+        });
+      }
+    });
+  };
+
+  window.addEventListener("scroll", checkMetricsCenter, { passive: true });
+  window.addEventListener("resize", checkMetricsCenter);
+  window.addEventListener("load", checkMetricsCenter);
+  checkMetricsCenter();
+})();
+
+/* CAMPAIGN SECTION SCROLL REVEAL */
+
+(() => {
+  const campaignItems = document.querySelectorAll(
+    ".campaign-feature-card, .campaign-embed-polish"
+  );
+
+  const campaignObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  campaignItems.forEach((item) => campaignObserver.observe(item));
+})();
+
+/* CAMPAIGN STICKY EDITORIAL REVEAL */
+
+(() => {
+  const campaignItems = document.querySelectorAll(
+    ".campaign-intro-card, .campaign-embed-card, .campaign-unity-card"
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  campaignItems.forEach((item) => observer.observe(item));
+
+  window.addEventListener("load", () => {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  });
+})();
+
+/* CAMPAIGN BACKGROUND TITLE FADE */
+
+(() => {
+  const campaignSection = document.querySelector(".campaign-scroll-section");
+  const campaignContent = document.querySelector(".campaign-content-layer");
+
+  if (!campaignSection || !campaignContent) return;
+
+  const updateCampaignFade = () => {
+    const contentRect = campaignContent.getBoundingClientRect();
+    const triggerPoint = window.innerHeight * 0.52;
+
+    if (contentRect.top < triggerPoint) {
+      campaignSection.classList.add("is-fading");
+    } else {
+      campaignSection.classList.remove("is-fading");
+    }
+  };
+
+  window.addEventListener("scroll", updateCampaignFade, { passive: true });
+  window.addEventListener("resize", updateCampaignFade);
+  window.addEventListener("load", updateCampaignFade);
+  updateCampaignFade();
+})();
+
+const campaignItems = document.querySelectorAll(
+  ".campaign-intro-card, .campaign-embed-card, .campaign-unity-card, .campaign-final-card"
+);
