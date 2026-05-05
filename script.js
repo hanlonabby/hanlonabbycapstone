@@ -20,6 +20,12 @@ const smoothstep = (edge0, edge1, x) => {
   return t * t * (3 - 2 * t);
 };
 
+const easeInOutCubic = (t) => {
+  return t < 0.5
+    ? 4 * t * t * t
+    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+};
+
 const setLayerStyles = (layer, opacity, translateY, scale, blur, allowPointer) => {
   if (!layer) return;
   layer.style.opacity = opacity;
@@ -60,6 +66,7 @@ const splitHypothesisHeadline = () => {
     "cultural",
     "moment"
   ]);
+
   const lines = Array.from(hypothesisHeadline.querySelectorAll(".hypothesis-line"));
 
   lines.forEach((line) => {
@@ -69,9 +76,11 @@ const splitHypothesisHeadline = () => {
     words.forEach((word, index) => {
       const span = document.createElement("span");
       const cleaned = word.toLowerCase().replace(/[^\w]/g, "");
+
       span.className = emphasisTerms.has(cleaned)
         ? "parallax-word emphasis"
         : "parallax-word";
+
       span.textContent = word;
       line.appendChild(span);
 
@@ -99,6 +108,7 @@ const updateAppleWordColors = (progress) => {
     const distance = Math.abs(index - activeIndex);
     const isActive = distance <= highlightSpan - 1;
     const color = isActive ? target : base;
+
     word.style.color = `rgb(${color.r}, ${color.g}, ${color.b})`;
   });
 };
@@ -107,10 +117,11 @@ function updateScrollScene() {
   if (scrollScene) {
     const rect = scrollScene.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const totalScrollable = rect.height - windowHeight;
+    const totalScrollable = rect.height - windowHeight || 1;
     const progress = clamp(-rect.top / totalScrollable, 0, 1);
 
     const timelineProgress = 1 - smoothstep(0.36, 0.55, progress);
+
     setLayerStyles(
       timelineLayer,
       timelineProgress,
@@ -123,6 +134,7 @@ function updateScrollScene() {
     const appleReveal = smoothstep(0.54, 0.62, progress);
     const appleExit = 1 - smoothstep(0.965, 0.999, progress);
     const appleProgress = appleReveal * appleExit;
+
     setLayerStyles(
       appleLayer,
       appleProgress,
@@ -152,7 +164,7 @@ function updateScrollScene() {
   if (hypothesisScene && hypothesisContent) {
     const rect = hypothesisScene.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const totalScrollable = rect.height - windowHeight;
+    const totalScrollable = rect.height - windowHeight || 1;
     const progress = clamp(-rect.top / totalScrollable, 0, 1);
     const reveal = smoothstep(0.06, 0.9, progress);
 
@@ -166,6 +178,7 @@ function updateScrollScene() {
         const depth = isEmphasis ? 22 : 14;
         const offset = ((index % 8) - 3.5) * depth;
         const scale = isEmphasis ? lerp(1.1, 1, reveal) : 1;
+
         word.style.transform = `translateY(${lerp(offset, 0, reveal)}px) scale(${scale})`;
       });
     }
@@ -174,12 +187,15 @@ function updateScrollScene() {
 
 splitAppleHeadline();
 splitHypothesisHeadline();
+
 window.addEventListener("scroll", updateScrollScene);
 window.addEventListener("load", () => {
   splitAppleHeadline();
   splitHypothesisHeadline();
   updateScrollScene();
 });
+
+/* CASE STUDY MODALS */
 
 const caseOpenButtons = Array.from(document.querySelectorAll("[data-case-open]"));
 const caseModals = Array.from(document.querySelectorAll(".case-modal"));
@@ -190,12 +206,14 @@ const closeCaseModals = () => {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
   });
+
   document.body.classList.remove("modal-open");
 };
 
 const openCaseModal = (modalId) => {
   const modal = document.getElementById(modalId);
   if (!modal) return;
+
   closeCaseModals();
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
@@ -220,11 +238,14 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+/* APPLE BRAND CARD STACK */
+
 const updateCaseStack = () => {
   if (caseCards.length === 0) return;
+
   const baseTop = 120;
 
-  caseCards.forEach((card, index) => {
+  caseCards.forEach((card) => {
     const rect = card.getBoundingClientRect();
     const delta = rect.top - baseTop;
     const normalized = clamp(delta / 200, -1, 1);
@@ -233,6 +254,7 @@ const updateCaseStack = () => {
       const incoming = 1 - normalized;
       const translateY = lerp(18, 0, incoming);
       const scale = lerp(0.99, 1, incoming);
+
       card.style.transform = `translateY(${translateY}px) scale(${scale})`;
       card.style.opacity = 1;
       card.style.pointerEvents = incoming > 0.6 ? "auto" : "none";
@@ -240,6 +262,7 @@ const updateCaseStack = () => {
       const outgoing = clamp(-normalized, 0, 1);
       const translateY = lerp(0, -18, outgoing);
       const scale = lerp(1, 0.99, outgoing);
+
       card.style.transform = `translateY(${translateY}px) scale(${scale})`;
       card.style.opacity = 1;
       card.style.pointerEvents = outgoing < 0.4 ? "auto" : "none";
@@ -250,3 +273,87 @@ const updateCaseStack = () => {
 updateCaseStack();
 window.addEventListener("scroll", updateCaseStack);
 window.addEventListener("resize", updateCaseStack);
+
+/* PRE-SHOW BLUE SCROLL SECTION */
+
+const preshowSection = document.querySelector(".preshow-scroll");
+const preshowLogo = document.querySelector(".preshow-scroll__logo");
+const preshowText = document.querySelector(".preshow-scroll__text");
+const preshowVideoReveal = document.querySelector(".preshow-video-reveal");
+
+function updatePreshowScroll() {
+  if (!preshowSection || !preshowLogo || !preshowText || !preshowVideoReveal) return;
+
+  const rect = preshowSection.getBoundingClientRect();
+  const scrollableDistance = preshowSection.offsetHeight - window.innerHeight || 1;
+  const rawProgress = clamp(-rect.top / scrollableDistance, 0, 1);
+
+  const logoProgress = easeInOutCubic(clamp((rawProgress - 0.2) / 0.34, 0, 1));
+  const textRevealProgress = easeInOutCubic(clamp((rawProgress - 0.14) / 0.28, 0, 1));
+  const textExitProgress = easeInOutCubic(clamp((rawProgress - 0.5) / 0.22, 0, 1));
+  const videoRevealProgress = easeInOutCubic(clamp((rawProgress - 0.52) / 0.25, 0, 1));
+  const videoExitProgress = easeInOutCubic(clamp((rawProgress - 0.84) / 0.16, 0, 1));
+
+const logoOpacity = 1 - logoProgress;
+
+preshowLogo.style.opacity = `${logoOpacity}`;
+preshowLogo.style.filter = `blur(${logoProgress * 7}px)`;
+  preshowLogo.style.transform = `
+    translateX(-50%)
+    translateY(${-logoProgress * 70}px)
+    scale(${1 - logoProgress * 0.08})
+  `;
+
+  const textOpacity = textRevealProgress * (1 - textExitProgress);
+  const textY = 120 - textRevealProgress * 120 - textExitProgress * 80;
+  const textScale = 0.97 + textRevealProgress * 0.03 - textExitProgress * 0.03;
+  const textBlur = (1 - textRevealProgress) * 12 + textExitProgress * 8;
+
+  preshowText.style.opacity = `${textOpacity}`;
+  preshowText.style.filter = `blur(${textBlur}px)`;
+  preshowText.style.transform = `
+    translateY(${textY}px)
+    scale(${textScale})
+  `;
+
+  const videoOpacity = videoRevealProgress * (1 - videoExitProgress);
+  const videoY = 120 - videoRevealProgress * 120 - videoExitProgress * 90;
+  const videoScale = 0.9 + videoRevealProgress * 0.1 - videoExitProgress * 0.04;
+
+  preshowVideoReveal.style.opacity = `${videoOpacity}`;
+  preshowVideoReveal.style.filter = `blur(${(1 - videoRevealProgress) * 10 + videoExitProgress * 8}px)`;
+  preshowVideoReveal.style.transform = `
+    translate(-50%, -50%)
+    translateY(${videoY}px)
+    scale(${videoScale})
+  `;
+
+  preshowVideoReveal.style.pointerEvents = videoOpacity > 0.6 ? "auto" : "none";
+}
+
+window.addEventListener("scroll", updatePreshowScroll);
+window.addEventListener("resize", updatePreshowScroll);
+window.addEventListener("load", updatePreshowScroll);
+updatePreshowScroll();
+
+/* EDITORIAL ROLLOUT CARDS */
+
+const scrollCards = document.querySelectorAll(".scroll-card");
+
+const cardObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      } else {
+        entry.target.classList.remove("is-visible");
+      }
+    });
+  },
+  {
+    threshold: 0.35,
+    rootMargin: "0px 0px -10% 0px",
+  }
+);
+
+scrollCards.forEach((card) => cardObserver.observe(card));
