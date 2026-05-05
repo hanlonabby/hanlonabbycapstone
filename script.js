@@ -339,47 +339,49 @@ updatePreshowScroll();
 /* EDITORIAL ROLLOUT CARDS */
 /* EDITORIAL ROLLOUT CARDS + DYNAMIC HEADLINE */
 
+/* EDITORIAL ROLLOUT CARDS + DYNAMIC HEADLINE */
+
 const scrollCards = document.querySelectorAll(".scroll-card");
-const dynamicHeadline = document.querySelector(".dynamic-rollout-headline");
-const dynamicLine = document.querySelector(".dynamic-line");
 const dynamicWord = document.querySelector(".dynamic-word");
 
+let currentDynamicWord = "";
+
 const updateDynamicHeadline = (card) => {
-  if (!dynamicHeadline || !dynamicLine || !dynamicWord || !card) return;
+  if (!dynamicWord || !card) return;
 
-  const headline = card.dataset.headline;
-  const word = card.dataset.word;
-  const color = card.dataset.color;
+  const newWord = card.dataset.word;
+  const newColor = card.dataset.color;
 
-  if (!headline || !word || !color) return;
+  if (!newWord || newWord === currentDynamicWord) return;
 
-  dynamicHeadline.classList.add("is-changing");
+  currentDynamicWord = newWord;
 
-  window.setTimeout(() => {
-    dynamicLine.textContent = headline;
-    dynamicWord.textContent = word;
-    dynamicWord.style.color = color;
+  dynamicWord.classList.add("is-changing");
 
-    dynamicHeadline.classList.remove("is-changing");
+  setTimeout(() => {
+    dynamicWord.textContent = newWord;
+    dynamicWord.style.color = newColor || "#e11d2e";
+    dynamicWord.classList.remove("is-changing");
   }, 180);
 };
 
 const cardObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => {
-      const card = entry.target;
+    const visibleEntries = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-      if (entry.isIntersecting) {
-        card.classList.add("is-visible");
-        updateDynamicHeadline(card);
-      } else {
-        card.classList.remove("is-visible");
-      }
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("is-visible", entry.isIntersecting);
     });
+
+    if (visibleEntries.length > 0) {
+      updateDynamicHeadline(visibleEntries[0].target);
+    }
   },
   {
-    threshold: 0.45,
-    rootMargin: "-15% 0px -35% 0px",
+    threshold: [0.25, 0.4, 0.55, 0.7],
+    rootMargin: "-20% 0px -35% 0px",
   }
 );
 

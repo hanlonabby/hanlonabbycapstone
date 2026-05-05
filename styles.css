@@ -754,6 +754,22 @@ h1 {
   transition: color 0.45s ease;
 }
 
+
+.dynamic-rollout-headline {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.dynamic-word {
+  display: block;
+  color: #e11d2e;
+  transition: color 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.dynamic-word.is-changing {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
 .intro-copy {
   font-size: clamp(1.05rem, 1.5vw, 1.35rem);
   line-height: 1.5;
