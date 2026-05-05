@@ -240,6 +240,8 @@ document.addEventListener("keydown", (event) => {
 
 /* APPLE BRAND CARD STACK */
 
+/* APPLE BRAND CARD STACK */
+
 const updateCaseStack = () => {
   if (caseCards.length === 0) return;
 
@@ -250,26 +252,22 @@ const updateCaseStack = () => {
     const delta = rect.top - baseTop;
     const normalized = clamp(delta / 200, -1, 1);
 
-    if (normalized >= 0) {
-      const incoming = 1 - normalized;
-      const translateY = lerp(18, 0, incoming);
-      const scale = lerp(0.99, 1, incoming);
-
-      card.style.transform = `translateY(${translateY}px) scale(${scale})`;
+    if (window.innerWidth <= 900) {
+      card.style.transform = "none";
       card.style.opacity = 1;
-      card.style.pointerEvents = incoming > 0.6 ? "auto" : "none";
-    } else {
-      const outgoing = clamp(-normalized, 0, 1);
-      const translateY = lerp(0, -18, outgoing);
-      const scale = lerp(1, 0.99, outgoing);
-
-      card.style.transform = `translateY(${translateY}px) scale(${scale})`;
-      card.style.opacity = 1;
-      card.style.pointerEvents = outgoing < 0.4 ? "auto" : "none";
+      card.style.pointerEvents = "auto";
+      return;
     }
+
+    const amount = Math.min(Math.abs(normalized), 1);
+    const translateY = normalized < 0 ? lerp(0, -12, amount) : lerp(14, 0, 1 - amount);
+    const scale = normalized < 0 ? lerp(1, 0.992, amount) : lerp(0.992, 1, 1 - amount);
+
+    card.style.transform = `translateY(${translateY}px) scale(${scale})`;
+    card.style.opacity = 1;
+    card.style.pointerEvents = "auto";
   });
 };
-
 updateCaseStack();
 window.addEventListener("scroll", updateCaseStack);
 window.addEventListener("resize", updateCaseStack);

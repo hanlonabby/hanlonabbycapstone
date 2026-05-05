@@ -4647,3 +4647,396 @@ iframe[src*="youtube.com"] {
   max-height: none !important;
   overflow: visible !important;
 }
+
+/* ESSENTIAL QUESTION — EDITORIAL TRANSITION */
+
+.essential-question-section {
+  min-height: 95vh;
+  background: #ffffff;
+  color: #6e6e73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 6vw;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.essential-question-inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.essential-question-label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #86868b;
+  margin-bottom: 1.5rem;
+}
+
+.essential-question-section h2 {
+  font-size: clamp(3.4rem, 7.5vw, 7.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+  font-weight: 800;
+  color: #6e6e73;
+  max-width: 1120px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .essential-question-section {
+    min-height: auto;
+    padding: 6rem 1.5rem;
+  }
+
+  .essential-question-section h2 {
+    font-size: clamp(2.6rem, 11vw, 4.5rem);
+    line-height: 0.98;
+  }
+}
+
+/* APPLE SECTION — EDITORIAL POLISH */
+
+#apple.history-section {
+  max-width: 1180px;
+  padding-top: 9rem;
+  padding-bottom: 12rem;
+}
+
+#apple > h2 {
+  font-size: clamp(3.6rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  margin-bottom: 1rem;
+}
+
+#apple .section-intro {
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+  line-height: 1.45;
+  color: #6e6e73;
+  max-width: 720px;
+  margin-bottom: 4.5rem;
+}
+
+#apple .case-grid {
+  max-width: 920px;
+}
+
+#apple .case-card {
+  border-radius: 34px;
+  padding: clamp(2rem, 3vw, 3rem);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.08);
+}
+
+#apple .case-card__visual {
+  border-radius: 26px;
+  min-height: 240px;
+  max-height: 300px;
+}
+
+#apple .case-card__body h3 {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+#apple .case-card__body p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #56565b;
+  max-width: 680px;
+}
+
+/* HERO — EDITORIAL OPENING */
+
+.hero {
+  min-height: 100vh;
+  padding: 8rem 6vw;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f7;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 14vh;
+  right: -8vw;
+  width: 42vw;
+  height: 68vh;
+  background: #e11d2e;
+  border-radius: 44px;
+  z-index: 0;
+  animation: heroBlockIn 1s ease both;
+}
+
+.hero .eyebrow,
+.hero h1,
+.hero .subtitle {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .eyebrow {
+  color: #e11d2e;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  max-width: 1050px;
+  font-size: clamp(4rem, 9vw, 8.8rem);
+  line-height: 0.88;
+  letter-spacing: -0.08em;
+  animation: heroTextIn 0.9s ease both;
+}
+
+.hero .subtitle {
+  margin-top: 1.5rem;
+  max-width: 620px;
+  font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+  line-height: 1.45;
+  color: #6e6e73;
+  animation: heroTextIn 1s ease both;
+  animation-delay: 0.15s;
+}
+
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroBlockIn {
+  from {
+    opacity: 0;
+    transform: translateX(80px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 7rem 1.5rem;
+  }
+
+  .hero::before {
+    width: 70vw;
+    height: 38vh;
+    right: -30vw;
+    top: 12vh;
+    border-radius: 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.4rem, 15vw, 5.8rem);
+  }
+}
+
+/* METHODOLOGY + WORKS CITED — EDITORIAL POLISH */
+
+#methodology {
+  max-width: none;
+  margin: 0;
+  padding: 9rem 6vw;
+  background: #ffffff;
+}
+
+#methodology h2 {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  max-width: 900px;
+  margin: 0 0 3rem;
+}
+
+#methodology p {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.6;
+  color: #6e6e73;
+  max-width: 760px;
+  margin-bottom: 1.5rem;
+}
+
+.works-cited-section {
+  background: #1d1d1f;
+  color: #ffffff;
+  padding: 8rem 6vw;
+}
+
+.works-cited-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.works-cited-section .eyebrow {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.works-cited-section h2 {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  color: #ffffff;
+  margin: 0 0 1.5rem;
+}
+
+.works-cited-description {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+}
+
+.works-cited-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #1d1d1f;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.works-cited-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(255, 255, 255, 0.18);
+}
+/* HERO TYPOGRAPHY POLISH */
+
+.hero h1 {
+  font-size: clamp(4.2rem, 9vw, 9.2rem);
+  line-height: 0.88;
+  letter-spacing: -0.08em;
+}
+
+.hero-subhead {
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  color: #6e6e73;
+  margin-top: 1.5rem;
+  max-width: 600px;
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  color: #86868b;
+  margin-top: 2.5rem;
+}
+
+/* OVERVIEW — MATCH HERO SCALE */
+
+.overview-editorial {
+  padding-top: 8rem;
+  padding-bottom: 10rem;
+}
+
+.overview-editorial h2 {
+  font-size: clamp(3.6rem, 8vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  max-width: 900px;
+}
+
+.overview-editorial p {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+  color: #6e6e73;
+  max-width: 700px;
+}
+
+/* HERO SUBHEAD + BYLINE TIGHTENING */
+
+.hero-subhead,
+.hero > p:not(.eyebrow):not(.subtitle) {
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.35;
+  color: #6e6e73;
+  max-width: 620px;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.hero .subtitle {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: #86868b;
+  margin-top: 1rem;
+  max-width: 620px;
+}
+
+/* OVERVIEW COLOR EMPHASIS + TIMELINE TRANSITION */
+
+.overview-blue {
+  color: #72bfeb;
+}
+
+.overview-orange {
+  color: #f28c28;
+}
+
+.overview-editorial {
+  padding-bottom: 12rem;
+  position: relative;
+}
+
+
+.scroll-scene {
+  margin-top: -2rem;
+}
+
+/* FIX GAP BEFORE TIMELINE */
+
+.overview-editorial {
+  padding-bottom: 4rem; /* was too big before */
+}
+
+.scroll-scene {
+  margin-top: -5rem; /* pulls timeline up */
+}
+
+.history-section {
+  padding-top: 4rem; /* tighter entry */
+}
+.scroll-scene {
+  margin-top: -7rem;
+}
+
+/* SCROLL PAUSE / SNAP EFFECT */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-snap-type: y proximity;
+}
+
+.hero,
+.overview-editorial,
+.history-section,
+.essential-question-section,
+#apple {
+  scroll-snap-align: start;
+}
+
+/* Make essential question feel like the "pause moment" */
+.essential-question-section {
+  scroll-snap-stop: always;
+}
