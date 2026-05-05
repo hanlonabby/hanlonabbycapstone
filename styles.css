@@ -4388,3 +4388,64 @@ iframe[src*="youtube.com"] {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* FINAL LAYOUT FIX */
+
+.editorial-blocks {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8rem !important;
+}
+
+.scroll-card {
+  width: 100% !important;
+  max-width: 900px !important;
+}
+
+.full-size-tiktok-video,
+.editorial-video {
+  width: 100% !important;
+  max-width: 360px !important;
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 auto !important;
+  background: #000 !important;
+  border-radius: 18px !important;
+}
+
+.video-embed-card,
+.editorial-media-frame {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin: 2rem auto !important;
+}
+
+.media-caption,
+.video-credit {
+  text-align: center !important;
+  margin: 1rem auto 2rem !important;
+}
+
+/* FINAL INSTAGRAM EMBED HEIGHT FIX */
+
+.section-six-media-card,
+.section-seven-embed-card {
+  max-height: 420px !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+}
+
+.section-six-media-card iframe,
+.section-seven-embed-card iframe,
+.instagram-media {
+  max-height: 420px !important;
+  overflow: hidden !important;
+}
+
+.section-six-pinterest-grid,
+.section-seven-collage {
+  align-items: start !important;
+}
