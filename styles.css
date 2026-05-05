@@ -4574,3 +4574,76 @@ iframe[src*="youtube.com"] {
   border-radius: 18px !important;
   display: block !important;
 }
+
+/* SAFE FIX: only affects the Apple Music TikTok video */
+.video-embed-card {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.video-embed-card .full-size-tiktok-video {
+  width: 100% !important;
+  max-width: 340px !important;
+  aspect-ratio: 9 / 16 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 18px !important;
+  display: block !important;
+}
+
+.social-embed-item {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible; /* THIS is key */
+}
+
+.case-card__visual iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* Fix vertical TikTok-style video */
+.editorial-video {
+  width: 100%;
+  max-width: 420px;        /* controls size */
+  aspect-ratio: 9 / 16;    /* THIS is the key */
+  height: auto;
+  object-fit: contain;     /* prevents cropping */
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+}
+.editorial-video {
+  aspect-ratio: 9 / 16 !important;
+  object-fit: contain !important;
+}
+
+/* FIX CAMPAIGN INSTAGRAM EMBED CROPPING */
+
+.campaign-embed-card {
+  width: min(540px, 90vw) !important;
+  max-width: 540px !important;
+  margin: 4rem auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.campaign-embed-card .instagram-media {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 540px !important;
+  margin: 0 auto !important;
+}
+
+.campaign-embed-card iframe {
+  width: 100% !important;
+  min-height: 760px !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
